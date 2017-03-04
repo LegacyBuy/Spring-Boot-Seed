@@ -1,0 +1,11 @@
+package com.legacybuy.enums;
+
+public enum ContractStatus {
+
+	NEW,
+	READY_TO_RECIEVE_PAYMENT,
+	SEALED,
+	READY_TO_SEND_PAYMENT_TO_BUYER,
+	READY_TO_SEND_PAYMENT_TO_SELLER,
+	SUCCESS
+}

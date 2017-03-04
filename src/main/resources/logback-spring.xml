@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration debug="true" scan="true" scanPeriod="10 minutes"> 
+	<property name="LOGS_HOME" value="${HOME}" />
+	
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<withJansi>true</withJansi>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %highlight(%-5level) - %logger{36} - %msg%n</Pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="AOP_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<withJansi>true</withJansi>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %highlight(%-5level) - %msg%n</Pattern>
+		</encoder>
+	</appender>
+	
+	<!-- <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOGS_HOME}/myProject_log.log</file>
+		<append>true</append>
+		<prudent>true</prudent>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss} [%thread] %highlight(%-5level) %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+		
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			rollover daily
+			<fileNamePattern>${LOGS_HOME}/myProject_audit.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+	
+	<appender name="AOP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOGS_HOME}/myProject_log.log</file>
+		<append>true</append>
+		<prudent>true</prudent>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss} [%thread] %highlight(%-5level) - %msg%n
+			</Pattern>
+		</encoder>
+		
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			rollover daily
+			<fileNamePattern>${LOGS_HOME}/myProject_audit.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>100MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender> -->
+
+	<logger name="com.legacybuy" level="debug" additivity="false">
+		<!-- <appender-ref ref="FILE" /> -->
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="com.legacybuy.aspect" level="debug" additivity="false">
+		<!-- <appender-ref ref="AOP_FILE" /> -->
+		<appender-ref ref="AOP_STDOUT" />
+	</logger>
+	
+	<root level="error">
+		<!-- <appender-ref ref="FILE"/> -->
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
